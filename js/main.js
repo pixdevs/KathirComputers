@@ -7,12 +7,16 @@
   var yearEl = document.getElementById("year");
   var navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
   var sections = document.querySelectorAll("main section[id]");
+  var hero = document.querySelector(".hero");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  var cycleMobileMq = window.matchMedia("(max-width: 860px)");
 
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());
   }
 
-  /* Sticky header state */
+  /* Sticky header */
   function onScroll() {
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 12);
@@ -21,12 +25,13 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* Mobile nav */
+  /* Mobile nav + body scroll lock */
   function closeNav() {
     if (!nav || !toggle) return;
     nav.classList.remove("is-open");
     toggle.setAttribute("aria-expanded", "false");
     toggle.setAttribute("aria-label", "Open menu");
+    document.body.classList.remove("nav-open");
   }
 
   function openNav() {
@@ -34,6 +39,7 @@
     nav.classList.add("is-open");
     toggle.setAttribute("aria-expanded", "true");
     toggle.setAttribute("aria-label", "Close menu");
+    document.body.classList.add("nav-open");
   }
 
   if (toggle && nav) {
@@ -100,6 +106,86 @@
     });
   }
 
+  /* Pointer parallax + ambient glow */
+  (function initPointerMotion() {
+    var root = document.documentElement;
+    var targetX = 0;
+    var targetY = 0;
+    var curX = 0;
+    var curY = 0;
+    var rafId = 0;
+    var active = false;
+
+    function canRun() {
+      return finePointer.matches && !reduceMotion.matches;
+    }
+
+    function setVars(x, y) {
+      root.style.setProperty("--mx", x.toFixed(4));
+      root.style.setProperty("--my", y.toFixed(4));
+      root.style.setProperty("--px", ((x + 0.5) * 100).toFixed(2) + "%");
+      root.style.setProperty("--py", ((y + 0.5) * 100).toFixed(2) + "%");
+    }
+
+    function tick() {
+      curX += (targetX - curX) * 0.08;
+      curY += (targetY - curY) * 0.08;
+      setVars(curX, curY);
+      if (
+        Math.abs(targetX - curX) > 0.0005 ||
+        Math.abs(targetY - curY) > 0.0005
+      ) {
+        rafId = requestAnimationFrame(tick);
+      } else {
+        rafId = 0;
+      }
+    }
+
+    function onMove(e) {
+      if (!active) return;
+      targetX = e.clientX / window.innerWidth - 0.5;
+      targetY = e.clientY / window.innerHeight - 0.5;
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    }
+
+    function enable() {
+      if (active || !canRun()) return;
+      active = true;
+      document.body.classList.add("has-pointer-motion");
+      window.addEventListener("pointermove", onMove, { passive: true });
+    }
+
+    function disable() {
+      active = false;
+      document.body.classList.remove("has-pointer-motion");
+      window.removeEventListener("pointermove", onMove);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+      targetX = targetY = curX = curY = 0;
+      setVars(0, 0);
+    }
+
+    function sync() {
+      if (canRun()) enable();
+      else disable();
+    }
+
+    sync();
+    if (finePointer.addEventListener) {
+      finePointer.addEventListener("change", sync);
+      reduceMotion.addEventListener("change", sync);
+    } else {
+      finePointer.addListener(sync);
+      reduceMotion.addListener(sync);
+    }
+
+    if (hero) {
+      /* no-op: CSS reads --mx/--my on .hero children */
+    }
+  })();
+
   /* Lifecycle cycle */
   var cycle = document.querySelector("[data-cycle]");
   if (cycle) {
@@ -107,6 +193,7 @@
       cycle.querySelectorAll(".cycle-node")
     );
     var panel = cycle.querySelector(".cycle-panel");
+    var mobileDetail = cycle.querySelector(".cycle-detail-mobile");
     var titleEl = cycle.querySelector("[data-cycle-title]");
     var detailEl = cycle.querySelector("[data-cycle-detail]");
     var numEl = cycle.querySelector("[data-cycle-num]");
@@ -114,9 +201,26 @@
     var detailM = cycle.querySelector("[data-cycle-detail-m]");
     var numM = cycle.querySelector("[data-cycle-num-m]");
     var activeIndex = 0;
+    var panelTimer = 0;
 
     function padNum(i) {
       return i < 9 ? "0" + (i + 1) : String(i + 1);
+    }
+
+    function syncCycleA11y() {
+      var isMobile = cycleMobileMq.matches;
+      if (panel) {
+        if (isMobile) {
+          panel.setAttribute("hidden", "");
+          panel.setAttribute("aria-hidden", "true");
+        } else {
+          panel.removeAttribute("hidden");
+          panel.setAttribute("aria-hidden", "false");
+        }
+      }
+      if (mobileDetail) {
+        mobileDetail.setAttribute("aria-hidden", isMobile ? "false" : "true");
+      }
     }
 
     function activate(index, focusNode) {
@@ -137,12 +241,27 @@
       var detail = node.getAttribute("data-detail") || "";
       var num = padNum(index);
 
-      if (titleEl) titleEl.textContent = title;
-      if (detailEl) detailEl.textContent = detail;
-      if (numEl) numEl.textContent = num;
-      if (titleM) titleM.textContent = title;
-      if (detailM) detailM.textContent = detail;
-      if (numM) numM.textContent = num;
+      function applyCopy() {
+        if (titleEl) titleEl.textContent = title;
+        if (detailEl) detailEl.textContent = detail;
+        if (numEl) numEl.textContent = num;
+        if (titleM) titleM.textContent = title;
+        if (detailM) detailM.textContent = detail;
+        if (numM) numM.textContent = num;
+      }
+
+      if (panel && !reduceMotion.matches) {
+        panel.classList.add("is-updating");
+        if (mobileDetail) mobileDetail.classList.add("is-updating");
+        if (panelTimer) clearTimeout(panelTimer);
+        panelTimer = setTimeout(function () {
+          applyCopy();
+          panel.classList.remove("is-updating");
+          if (mobileDetail) mobileDetail.classList.remove("is-updating");
+        }, 140);
+      } else {
+        applyCopy();
+      }
 
       if (panel) {
         panel.setAttribute("aria-labelledby", node.id);
@@ -152,13 +271,14 @@
     }
 
     nodes.forEach(function (node, index) {
-      node.addEventListener("mouseenter", function () {
-        activate(index, false);
-      });
       node.addEventListener("focus", function () {
         activate(index, false);
       });
       node.addEventListener("click", function () {
+        activate(index, false);
+      });
+      node.addEventListener("pointerenter", function () {
+        if (!finePointer.matches) return;
         activate(index, false);
       });
     });
@@ -182,6 +302,13 @@
         activate(nodes.length - 1, true);
       }
     });
+
+    syncCycleA11y();
+    if (cycleMobileMq.addEventListener) {
+      cycleMobileMq.addEventListener("change", syncCycleA11y);
+    } else {
+      cycleMobileMq.addListener(syncCycleA11y);
+    }
 
     activate(0, false);
   }
