@@ -10,7 +10,6 @@
   var hero = document.querySelector(".hero");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-  var cycleMobileMq = window.matchMedia("(max-width: 860px)");
 
   if (yearEl) {
     yearEl.textContent = String(new Date().getFullYear());
@@ -186,41 +185,21 @@
     }
   })();
 
-  /* Lifecycle cycle */
+  /* Services engagement rail */
   var cycle = document.querySelector("[data-cycle]");
   if (cycle) {
     var nodes = Array.prototype.slice.call(
-      cycle.querySelectorAll(".cycle-node")
+      cycle.querySelectorAll(".services-stage")
     );
-    var panel = cycle.querySelector(".cycle-panel");
-    var mobileDetail = cycle.querySelector(".cycle-detail-mobile");
+    var panel = cycle.querySelector(".services-detail");
     var titleEl = cycle.querySelector("[data-cycle-title]");
     var detailEl = cycle.querySelector("[data-cycle-detail]");
     var numEl = cycle.querySelector("[data-cycle-num]");
-    var titleM = cycle.querySelector("[data-cycle-title-m]");
-    var detailM = cycle.querySelector("[data-cycle-detail-m]");
-    var numM = cycle.querySelector("[data-cycle-num-m]");
     var activeIndex = 0;
     var panelTimer = 0;
 
     function padNum(i) {
       return i < 9 ? "0" + (i + 1) : String(i + 1);
-    }
-
-    function syncCycleA11y() {
-      var isMobile = cycleMobileMq.matches;
-      if (panel) {
-        if (isMobile) {
-          panel.setAttribute("hidden", "");
-          panel.setAttribute("aria-hidden", "true");
-        } else {
-          panel.removeAttribute("hidden");
-          panel.setAttribute("aria-hidden", "false");
-        }
-      }
-      if (mobileDetail) {
-        mobileDetail.setAttribute("aria-hidden", isMobile ? "false" : "true");
-      }
     }
 
     function activate(index, focusNode) {
@@ -245,19 +224,14 @@
         if (titleEl) titleEl.textContent = title;
         if (detailEl) detailEl.textContent = detail;
         if (numEl) numEl.textContent = num;
-        if (titleM) titleM.textContent = title;
-        if (detailM) detailM.textContent = detail;
-        if (numM) numM.textContent = num;
       }
 
       if (panel && !reduceMotion.matches) {
         panel.classList.add("is-updating");
-        if (mobileDetail) mobileDetail.classList.add("is-updating");
         if (panelTimer) clearTimeout(panelTimer);
         panelTimer = setTimeout(function () {
           applyCopy();
           panel.classList.remove("is-updating");
-          if (mobileDetail) mobileDetail.classList.remove("is-updating");
         }, 140);
       } else {
         applyCopy();
@@ -302,13 +276,6 @@
         activate(nodes.length - 1, true);
       }
     });
-
-    syncCycleA11y();
-    if (cycleMobileMq.addEventListener) {
-      cycleMobileMq.addEventListener("change", syncCycleA11y);
-    } else {
-      cycleMobileMq.addListener(syncCycleA11y);
-    }
 
     activate(0, false);
   }

@@ -100,155 +100,110 @@
 
       <section class="section services" id="services" aria-labelledby="services-title">
         <div class="section-inner">
-          <div class="section-header reveal">
+          <div class="section-header services-header reveal">
             <p class="eyebrow">Services</p>
             <h2 id="services-title">End-to-end technology environments</h2>
+            <p class="services-lead">
+              Modern environments are tightly coupled—network reliability depends
+              on hardware integrity, and hardware depends on clean power. We
+              design and sustain the full stack from power continuity and silicon
+              through network, cloud, cybersecurity, and AI-assisted automation,
+              so clients hold single-source ownership from architecture through
+              sustainment.
+            </p>
           </div>
 
-          <div class="services-grid">
-            <div class="services-copy">
-              <div class="capabilities-body">
-                <p class="reveal">
-                  Modern technology environments are tightly coupled: network
-                  reliability depends on hardware integrity, and hardware
-                  stability depends on clean, continuous power. We design and
-                  sustain end-to-end ecosystems—from power continuity and silicon
-                  sourcing through network architecture, cloud, and AI-assisted
-                  automation.
-                </p>
-                <p class="reveal">
-                  Clients engage us to reduce multi-vendor friction and hold
-                  clear ownership across cybersecurity and the full stack. We
-                  support the complete lifecycle so each layer operates securely
-                  and coherently—from architecture through sustainment.
-                </p>
-              </div>
+          <div class="services-engagement reveal" id="engagement" data-cycle>
+            <div
+              class="services-rail"
+              role="tablist"
+              aria-label="Lifecycle stages"
+            >
+              <button
+                type="button"
+                class="services-stage is-active"
+                role="tab"
+                id="cycle-tab-1"
+                aria-selected="true"
+                aria-controls="services-detail"
+                data-title="Architect &amp; Establish"
+                data-detail="Power continuity planning (UPS/inverters), hardware procurement, and secure, scalable network and cloud architectures."
+                data-short="Architect"
+              >
+                <span class="services-stage-num">01</span>
+                <span class="services-stage-name">Architect</span>
+                <span class="services-stage-sub">Establish</span>
+              </button>
+              <span class="services-rail-join" aria-hidden="true"></span>
+              <button
+                type="button"
+                class="services-stage"
+                role="tab"
+                id="cycle-tab-2"
+                aria-selected="false"
+                aria-controls="services-detail"
+                tabindex="-1"
+                data-title="Implement &amp; Integrate"
+                data-detail="Routing and switching, IoT device integration, and cloud environment deployment with validated end-to-end connectivity."
+                data-short="Implement"
+              >
+                <span class="services-stage-num">02</span>
+                <span class="services-stage-name">Implement</span>
+                <span class="services-stage-sub">Integrate</span>
+              </button>
+              <span class="services-rail-join" aria-hidden="true"></span>
+              <button
+                type="button"
+                class="services-stage"
+                role="tab"
+                id="cycle-tab-3"
+                aria-selected="false"
+                aria-controls="services-detail"
+                tabindex="-1"
+                data-title="Secure &amp; Harden"
+                data-detail="Cybersecurity frameworks, threat diagnostics, and network hardening against emerging digital threats—security engineered into the system, not added later."
+                data-short="Secure"
+              >
+                <span class="services-stage-num">03</span>
+                <span class="services-stage-name">Secure</span>
+                <span class="services-stage-sub">Harden</span>
+              </button>
+              <span class="services-rail-join" aria-hidden="true"></span>
+              <button
+                type="button"
+                class="services-stage"
+                role="tab"
+                id="cycle-tab-4"
+                aria-selected="false"
+                aria-controls="services-detail"
+                tabindex="-1"
+                data-title="Sustain &amp; Optimize"
+                data-detail="Proactive hardware maintenance, component-level repair, and ongoing remote IT support for operational continuity."
+                data-short="Sustain"
+              >
+                <span class="services-stage-num">04</span>
+                <span class="services-stage-name">Sustain</span>
+                <span class="services-stage-sub">Optimize</span>
+              </button>
             </div>
 
-            <div class="services-cycle" id="engagement">
-              <p class="services-cycle-label reveal">Engagement model</p>
-              <p class="services-cycle-hint reveal">
-                Hover or focus a stage to explore each phase.
-              </p>
-              <div class="cycle reveal" data-cycle>
-                <div class="cycle-stage">
-                  <svg class="cycle-ring" viewBox="0 0 400 400" aria-hidden="true">
-                    <circle class="cycle-track" cx="200" cy="200" r="148" fill="none" />
-                    <circle class="cycle-progress" cx="200" cy="200" r="148" fill="none" />
-                  </svg>
-
-                  <div
-                    class="cycle-nodes"
-                    role="tablist"
-                    aria-label="Lifecycle stages"
-                  >
-                    <button
-                      type="button"
-                      class="cycle-node is-active"
-                      role="tab"
-                      id="cycle-tab-1"
-                      aria-selected="true"
-                      aria-controls="cycle-panel"
-                      data-title="Architect &amp; Establish"
-                      data-detail="Power continuity planning (UPS/inverters), hardware procurement, and secure, scalable network and cloud architectures."
-                      data-short="Architect"
-                      style="--i: 0"
-                    >
-                      <span class="cycle-node-inner">
-                        <span class="cycle-node-num">01</span>
-                        <span class="cycle-node-label">Architect</span>
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      class="cycle-node"
-                      role="tab"
-                      id="cycle-tab-2"
-                      aria-selected="false"
-                      aria-controls="cycle-panel"
-                      tabindex="-1"
-                      data-title="Implement &amp; Integrate"
-                      data-detail="Routing and switching, IoT device integration, and cloud environment deployment with validated end-to-end connectivity."
-                      data-short="Implement"
-                      style="--i: 1"
-                    >
-                      <span class="cycle-node-inner">
-                        <span class="cycle-node-num">02</span>
-                        <span class="cycle-node-label">Implement</span>
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      class="cycle-node"
-                      role="tab"
-                      id="cycle-tab-3"
-                      aria-selected="false"
-                      aria-controls="cycle-panel"
-                      tabindex="-1"
-                      data-title="Secure &amp; Harden"
-                      data-detail="Cybersecurity frameworks, threat diagnostics, and network hardening against emerging digital threats—security engineered into the system, not added later."
-                      data-short="Secure"
-                      style="--i: 2"
-                    >
-                      <span class="cycle-node-inner">
-                        <span class="cycle-node-num">03</span>
-                        <span class="cycle-node-label">Secure</span>
-                      </span>
-                    </button>
-                    <button
-                      type="button"
-                      class="cycle-node"
-                      role="tab"
-                      id="cycle-tab-4"
-                      aria-selected="false"
-                      aria-controls="cycle-panel"
-                      tabindex="-1"
-                      data-title="Sustain &amp; Optimize"
-                      data-detail="Proactive hardware maintenance, component-level repair, and ongoing remote IT support for operational continuity."
-                      data-short="Sustain"
-                      style="--i: 3"
-                    >
-                      <span class="cycle-node-inner">
-                        <span class="cycle-node-num">04</span>
-                        <span class="cycle-node-label">Sustain</span>
-                      </span>
-                    </button>
-                  </div>
-
-                  <div
-                    class="cycle-panel"
-                    id="cycle-panel"
-                    role="tabpanel"
-                    aria-labelledby="cycle-tab-1"
-                    aria-live="polite"
-                  >
-                    <p class="cycle-panel-num" data-cycle-num>01</p>
-                    <h3 class="cycle-panel-title" data-cycle-title>
-                      Architect &amp; Establish
-                    </h3>
-                    <p class="cycle-panel-detail" data-cycle-detail>
-                      Power continuity planning (UPS/inverters), hardware
-                      procurement, and secure, scalable network and cloud
-                      architectures.
-                    </p>
-                  </div>
-                </div>
-
-                <div
-                  class="cycle-detail-mobile"
-                  id="cycle-detail-mobile"
-                  aria-hidden="true"
-                >
-                  <p class="cycle-panel-num" data-cycle-num-m>01</p>
-                  <h3 class="cycle-panel-title" data-cycle-title-m>
-                    Architect &amp; Establish
-                  </h3>
-                  <p class="cycle-panel-detail" data-cycle-detail-m>
-                    Power continuity planning (UPS/inverters), hardware
-                    procurement, and secure, scalable network and cloud
-                    architectures.
-                  </p>
-                </div>
+            <div
+              class="services-detail"
+              id="services-detail"
+              role="tabpanel"
+              aria-labelledby="cycle-tab-1"
+              aria-live="polite"
+            >
+              <p class="services-detail-num" data-cycle-num>01</p>
+              <div class="services-detail-body">
+                <h3 class="services-detail-title" data-cycle-title>
+                  Architect &amp; Establish
+                </h3>
+                <p class="services-detail-text" data-cycle-detail>
+                  Power continuity planning (UPS/inverters), hardware
+                  procurement, and secure, scalable network and cloud
+                  architectures.
+                </p>
               </div>
             </div>
           </div>
