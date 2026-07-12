@@ -28,12 +28,34 @@ Then visit `http://localhost:8080`.
 
 Optional: add a `CNAME` file at the root if you use a custom domain.
 
+### Set your public site URL (SEO / social)
+
+Open Graph, Twitter cards, canonical URL, JSON-LD, `robots.txt`, and `sitemap.xml` use the placeholder `TODO_SITE_URL`.
+
+After Pages is live, replace **every** occurrence of `TODO_SITE_URL` with your origin (**no trailing slash**), for example:
+
+```text
+https://yourname.github.io/KathirComputers
+```
+
+Search the repo for `TODO_SITE_URL` and replace in:
+
+- `index.html` (canonical, Open Graph, Twitter, JSON-LD)
+- `robots.txt`
+- `sitemap.xml`
+
+Share previews (LinkedIn, WhatsApp, X) need absolute `og:image` URLs to work.
+
 ## Structure
 
 ```
-index.html      # Single-page site
-css/styles.css  # Theme and layout
-js/main.js      # Nav, scroll reveal, active section
-assets/logo.png             # Original (white background)
-assets/logo-transparent.png # Transparent mark used on the site
+index.html                 # Single-page site + SEO meta
+css/styles.css             # Theme and layout
+js/main.js                 # Nav, scroll reveal, accordion
+robots.txt                 # Crawler rules
+sitemap.xml                # Sitemap
+assets/logo.png            # Original (white background)
+assets/logo-transparent.png
+assets/og-image.png        # Social / Open Graph share image
+assets/kc-vector.png       # Hero visual
 ```
