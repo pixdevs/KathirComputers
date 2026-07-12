@@ -2,26 +2,24 @@
 
 Static site for an engineering services firm in Kinathukadavu, Coimbatore—power electronics, computing infrastructure, networking, cloud, and cybersecurity.
 
-Vanilla HTML, CSS, and JS. No build step. Serves from the repo root on [GitHub Pages](https://pages.github.com/).
+Live: [pixdevs.github.io/KathirComputers](https://pixdevs.github.io/KathirComputers/)
+
+Vanilla HTML, CSS, and JS. No build step. Serves from the repo root on GitHub Pages.
 
 ## Preview
-
-Open `index.html`, or from this folder:
 
 ```bash
 python -m http.server 8080
 ```
 
-## SEO setup
+## SEO
 
-After the site is live, replace every `TODO_SITE_URL` with your public origin (**no trailing slash**), e.g. `https://yourname.github.io/KathirComputers`.
-
-Touches: `index.html`, `robots.txt`, `sitemap.xml`. Absolute URLs are required for Open Graph / social previews (`assets/og-image.png`).
+Canonical, Open Graph, Twitter, JSON-LD, `robots.txt`, and `sitemap.xml` point at the live URL above. Share image: `assets/og-image.png`.
 
 ## Fork & contribute
 
-1. Fork the repo and create a branch.
-2. Keep the stack dependency-free (no bundler required).
-3. Open a pull request with a short description of the change.
+1. Fork and branch.
+2. Keep the stack dependency-free.
+3. Open a PR with a short description.
 
-Issues and PRs for copy, accessibility, and performance fixes are welcome.
+Issues and PRs for copy, accessibility, and performance are welcome.
