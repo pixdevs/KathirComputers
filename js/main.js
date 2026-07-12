@@ -99,4 +99,90 @@
       el.classList.add("is-visible");
     });
   }
+
+  /* Lifecycle cycle */
+  var cycle = document.querySelector("[data-cycle]");
+  if (cycle) {
+    var nodes = Array.prototype.slice.call(
+      cycle.querySelectorAll(".cycle-node")
+    );
+    var panel = cycle.querySelector(".cycle-panel");
+    var titleEl = cycle.querySelector("[data-cycle-title]");
+    var detailEl = cycle.querySelector("[data-cycle-detail]");
+    var numEl = cycle.querySelector("[data-cycle-num]");
+    var titleM = cycle.querySelector("[data-cycle-title-m]");
+    var detailM = cycle.querySelector("[data-cycle-detail-m]");
+    var numM = cycle.querySelector("[data-cycle-num-m]");
+    var activeIndex = 0;
+
+    function padNum(i) {
+      return i < 9 ? "0" + (i + 1) : String(i + 1);
+    }
+
+    function activate(index, focusNode) {
+      if (index < 0 || index >= nodes.length) return;
+      activeIndex = index;
+      var node = nodes[index];
+
+      nodes.forEach(function (n, i) {
+        var selected = i === index;
+        n.classList.toggle("is-active", selected);
+        n.setAttribute("aria-selected", selected ? "true" : "false");
+        n.tabIndex = selected ? 0 : -1;
+      });
+
+      cycle.setAttribute("data-active", String(index));
+
+      var title = node.getAttribute("data-title") || "";
+      var detail = node.getAttribute("data-detail") || "";
+      var num = padNum(index);
+
+      if (titleEl) titleEl.textContent = title;
+      if (detailEl) detailEl.textContent = detail;
+      if (numEl) numEl.textContent = num;
+      if (titleM) titleM.textContent = title;
+      if (detailM) detailM.textContent = detail;
+      if (numM) numM.textContent = num;
+
+      if (panel) {
+        panel.setAttribute("aria-labelledby", node.id);
+      }
+
+      if (focusNode) node.focus();
+    }
+
+    nodes.forEach(function (node, index) {
+      node.addEventListener("mouseenter", function () {
+        activate(index, false);
+      });
+      node.addEventListener("focus", function () {
+        activate(index, false);
+      });
+      node.addEventListener("click", function () {
+        activate(index, false);
+      });
+    });
+
+    cycle.addEventListener("keydown", function (e) {
+      if (!nodes.length) return;
+      var next = activeIndex;
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+        next = (activeIndex + 1) % nodes.length;
+        e.preventDefault();
+        activate(next, true);
+      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+        next = (activeIndex - 1 + nodes.length) % nodes.length;
+        e.preventDefault();
+        activate(next, true);
+      } else if (e.key === "Home") {
+        e.preventDefault();
+        activate(0, true);
+      } else if (e.key === "End") {
+        e.preventDefault();
+        activate(nodes.length - 1, true);
+      }
+    });
+
+    activate(0, false);
+  }
 })();

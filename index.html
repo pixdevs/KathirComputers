@@ -43,9 +43,8 @@
 
         <nav class="site-nav" id="site-nav" aria-label="Primary">
           <ul>
-            <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#engagement">Engagement</a></li>
-            <li><a href="#outcomes">Outcomes</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#outcomes">Values</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
           <a class="btn btn-primary btn-nav" href="#contact">Discuss a project</a>
@@ -58,55 +57,184 @@
         <div class="hero-atmosphere" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
         <div class="hero-inner">
-          <p class="eyebrow reveal">Engineering Services &amp; Solutions</p>
-          <h1 id="hero-brand" class="hero-brand reveal">
-            Kathir Computers<br />&amp; Power Electronics
-          </h1>
-          <p class="hero-tagline reveal">
-            Empowering Innovation, Energizing Solutions
-          </p>
-          <p class="hero-support reveal">
-            Engineering services and solutions spanning power electronics,
-            computing infrastructure, networking, and cybersecurity—delivered
-            under single-source accountability.
-          </p>
-          <div class="hero-actions reveal">
-            <a class="btn btn-primary" href="#contact">Discuss a project</a>
-            <a
-              class="btn btn-ghost"
-              href="https://www.linkedin.com/company/kathir-computers"
-              target="_blank"
-              rel="noopener noreferrer"
-              >LinkedIn</a
-            >
+          <div class="hero-copy">
+            <p class="eyebrow reveal">Engineering Services &amp; Solutions</p>
+            <h1 id="hero-brand" class="hero-brand reveal">
+              Kathir Computers<br />&amp; Power Electronics
+            </h1>
+            <p class="hero-tagline reveal">
+              Empowering Innovation, Energizing Solutions
+            </p>
+            <p class="hero-support reveal">
+              Engineering services and solutions spanning power electronics,
+              computing infrastructure, networking, and cybersecurity—delivered
+              under single-source accountability.
+            </p>
+            <div class="hero-actions reveal">
+              <a class="btn btn-primary" href="#contact">Discuss a project</a>
+              <a
+                class="btn btn-ghost"
+                href="https://www.linkedin.com/company/kathir-computers"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+            </div>
+          </div>
+          <div class="hero-visual reveal">
+            <img
+              src="assets/kc-vector.png"
+              alt="Abstract composition of technology icons forming a stylized C in blue and green"
+              width="720"
+              height="720"
+              decoding="async"
+            />
           </div>
         </div>
-        <a class="scroll-cue" href="#capabilities" aria-label="Scroll to capabilities">
+        <a class="scroll-cue" href="#services" aria-label="Scroll to services">
           <span>Scroll</span>
         </a>
       </section>
 
-      <section class="section capabilities" id="capabilities" aria-labelledby="capabilities-title">
+      <section class="section services" id="services" aria-labelledby="services-title">
         <div class="section-inner">
           <div class="section-header reveal">
-            <p class="eyebrow">Capabilities</p>
-            <h2 id="capabilities-title">End-to-end technology environments</h2>
+            <p class="eyebrow">Services</p>
+            <h2 id="services-title">End-to-end technology environments</h2>
           </div>
-          <div class="capabilities-body">
-            <p class="lead reveal">
-              Modern technology environments are tightly coupled: network
-              reliability depends on hardware integrity, and hardware stability
-              and efficiency depends on clean, continuous power.
-            </p>
-            <p class="reveal">
-              We are an engineering services firm that designs, implements, and
-              sustains end-to-end technology environments—from power continuity
-              and silicon sourcing through network architecture, cloud
-              deployment, and cybersecurity. Clients engage us to reduce
-              multi-vendor friction and establish clear ownership across the
-              full technology stack.
-            </p>
+
+          <div class="services-grid">
+            <div class="services-copy">
+              <div class="capabilities-body">
+                <p class="reveal">
+                  In today’s interconnected world, modern technology environments are more tightly integrated than ever before: network reliability builds upon robust hardware integrity, and stability. Our expertise lies in designing, deploying, and sustaining comprehensive, end-to-end ecosystems—spanning power continuity, silicon sourcing, resilient network architecture, and scalable cloud infrastructure.
+                  We also deliver solutions that integrate AI-driven systems for smarter automation, predictive analytics, and process optimization. From uninterrupted power all the way to intelligent software and secure networks, we empower clients to embrace innovation confidently while maintaining rigorous standards of protection and coherence.          
+                </p>
+                <p class="reveal">
+                  Clients engage us to reduce multi-vendor friction and hold
+                  clear ownership across cybersecurity and the full stack. We
+                  support the complete lifecycle so each layer operates securely
+                  and coherently—from architecture through sustainment.
+                </p>
+              </div>
+            </div>
+
+            <div class="services-cycle" id="engagement">
+              <!-- <p class="services-cycle-label reveal">Engagement model</p>
+              <p class="services-cycle-hint reveal">
+                Hover or focus a stage to explore each phase. -->
+              </p>
+              <div class="cycle reveal" data-cycle>
+                <div class="cycle-stage">
+                  <svg class="cycle-ring" viewBox="0 0 400 400" aria-hidden="true">
+                    <circle class="cycle-track" cx="200" cy="200" r="148" fill="none" />
+                    <circle class="cycle-progress" cx="200" cy="200" r="148" fill="none" />
+                  </svg>
+
+                  <div
+                    class="cycle-nodes"
+                    role="tablist"
+                    aria-label="Lifecycle stages"
+                  >
+                    <button
+                      type="button"
+                      class="cycle-node is-active"
+                      role="tab"
+                      id="cycle-tab-1"
+                      aria-selected="true"
+                      aria-controls="cycle-panel"
+                      data-title="Architect &amp; Establish"
+                      data-detail="Power continuity planning (UPS/inverters), hardware procurement, and secure, scalable network and cloud architectures."
+                      data-short="Architect"
+                      style="--i: 0"
+                    >
+                      <span class="cycle-node-num">01</span>
+                      <span class="cycle-node-label">Architect</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="cycle-node"
+                      role="tab"
+                      id="cycle-tab-2"
+                      aria-selected="false"
+                      aria-controls="cycle-panel"
+                      tabindex="-1"
+                      data-title="Implement &amp; Integrate"
+                      data-detail="Routing and switching, IoT device integration, and cloud environment deployment with validated end-to-end connectivity."
+                      data-short="Implement"
+                      style="--i: 1"
+                    >
+                      <span class="cycle-node-num">02</span>
+                      <span class="cycle-node-label">Implement</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="cycle-node"
+                      role="tab"
+                      id="cycle-tab-3"
+                      aria-selected="false"
+                      aria-controls="cycle-panel"
+                      tabindex="-1"
+                      data-title="Secure &amp; Harden"
+                      data-detail="Cybersecurity frameworks, threat diagnostics, and network hardening against emerging digital threats—security engineered into the system, not added later."
+                      data-short="Secure"
+                      style="--i: 2"
+                    >
+                      <span class="cycle-node-num">03</span>
+                      <span class="cycle-node-label">Secure</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="cycle-node"
+                      role="tab"
+                      id="cycle-tab-4"
+                      aria-selected="false"
+                      aria-controls="cycle-panel"
+                      tabindex="-1"
+                      data-title="Sustain &amp; Optimize"
+                      data-detail="Proactive hardware maintenance, component-level repair, and ongoing remote IT support for operational continuity."
+                      data-short="Sustain"
+                      style="--i: 3"
+                    >
+                      <span class="cycle-node-num">04</span>
+                      <span class="cycle-node-label">Sustain</span>
+                    </button>
+                  </div>
+
+                  <div
+                    class="cycle-panel"
+                    id="cycle-panel"
+                    role="tabpanel"
+                    aria-labelledby="cycle-tab-1"
+                    aria-live="polite"
+                  >
+                    <p class="cycle-panel-num" data-cycle-num>01</p>
+                    <h3 class="cycle-panel-title" data-cycle-title>
+                      Architect &amp; Establish
+                    </h3>
+                    <p class="cycle-panel-detail" data-cycle-detail>
+                      Power continuity planning (UPS/inverters), hardware
+                      procurement, and secure, scalable network and cloud
+                      architectures.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="cycle-detail-mobile" aria-hidden="true">
+                  <p class="cycle-panel-num" data-cycle-num-m>01</p>
+                  <h3 class="cycle-panel-title" data-cycle-title-m>
+                    Architect &amp; Establish
+                  </h3>
+                  <p class="cycle-panel-detail" data-cycle-detail-m>
+                    Power continuity planning (UPS/inverters), hardware
+                    procurement, and secure, scalable network and cloud
+                    architectures.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
+
           <ul class="capability-tags reveal" aria-label="Core domains">
             <li>Power Electronics</li>
             <li>Computing Infrastructure</li>
@@ -114,95 +242,54 @@
             <li>Cybersecurity</li>
             <li>Cloud Deployment</li>
             <li>Systems Integration</li>
+            <li>AI-based security Systems</li>
+            <!-- <li>Data Security</li> -->
           </ul>
-        </div>
-      </section>
-
-      <section class="section engagement" id="engagement" aria-labelledby="engagement-title">
-        <div class="section-inner">
-          <div class="section-header reveal">
-            <p class="eyebrow">Engagement Model</p>
-            <h2 id="engagement-title">The full lifecycle</h2>
-            <p class="section-intro">
-              We support the complete lifecycle of your technology environment
-              so each layer is engineered to operate securely and coherently.
-            </p>
-          </div>
-
-          <ol class="lifecycle">
-            <li class="lifecycle-step reveal">
-              <span class="step-num" aria-hidden="true">01</span>
-              <div class="step-body">
-                <h3>Architect &amp; Establish</h3>
-                <p>
-                  Power continuity planning (UPS/inverters), hardware
-                  procurement, and secure, scalable network and cloud
-                  architectures.
-                </p>
-              </div>
-            </li>
-            <li class="lifecycle-step reveal">
-              <span class="step-num" aria-hidden="true">02</span>
-              <div class="step-body">
-                <h3>Implement &amp; Integrate</h3>
-                <p>
-                  Routing and switching, IoT device integration, and cloud
-                  environment deployment with validated end-to-end connectivity.
-                </p>
-              </div>
-            </li>
-            <li class="lifecycle-step reveal">
-              <span class="step-num" aria-hidden="true">03</span>
-              <div class="step-body">
-                <h3>Secure &amp; Harden</h3>
-                <p>
-                  Cybersecurity frameworks, threat diagnostics, and network
-                  hardening against emerging digital threats—security engineered
-                  into the system, not added later.
-                </p>
-              </div>
-            </li>
-            <li class="lifecycle-step reveal">
-              <span class="step-num" aria-hidden="true">04</span>
-              <div class="step-body">
-                <h3>Sustain &amp; Optimize</h3>
-                <p>
-                  Proactive hardware maintenance, component-level repair, and
-                  ongoing remote IT support for operational continuity.
-                </p>
-              </div>
-            </li>
-          </ol>
         </div>
       </section>
 
       <section class="section outcomes" id="outcomes" aria-labelledby="outcomes-title">
         <div class="section-inner">
           <div class="section-header reveal">
-            <p class="eyebrow">Outcomes</p>
-            <h2 id="outcomes-title">Infrastructure that serves the business</h2>
+            <p class="eyebrow">Value</p>
+            <h2 id="outcomes-title">Solutions that reinforce each other</h2>
+            <p class="section-intro">
+              One accountable partner across power, silicon, network, and
+              security—so every layer is designed to strengthen the next.
+            </p>
           </div>
-          <div class="outcomes-grid">
-            <div class="outcome-block reveal">
-              <h3>Integrated &amp; resilient</h3>
-              <p>
-                Partnering with a firm that understands both the electrical
-                realities of hardware and the demands of network security yields
-                infrastructure that is integrated, resilient, and operationally
-                coherent.
-              </p>
+
+          <div class="complement reveal" aria-label="Complementary engineering domains">
+            <div class="complement-item">
+              <span class="complement-index">01</span>
+              <h3>Power Electronics</h3>
+              <p>Clean, continuous power as the foundation of stable systems.</p>
             </div>
-            <div class="outcome-block reveal">
-              <h3>SME capacity preserved</h3>
-              <p>
-                Lifecycle engagement preserves internal SME capacity: by
-                transferring debugging, maintenance, and day-to-day operations
-                to us, your specialists remain focused on product development,
-                strategic research, and initiatives that advance long-term
-                business objectives.
-              </p>
+            <span class="complement-link" aria-hidden="true"></span>
+            <div class="complement-item">
+              <span class="complement-index">02</span>
+              <h3>Computing Infrastructure</h3>
+              <p>Hardware and platforms engineered for the workloads you run.</p>
+            </div>
+            <span class="complement-link" aria-hidden="true"></span>
+            <div class="complement-item">
+              <span class="complement-index">03</span>
+              <h3>Networking &amp; Cloud</h3>
+              <p>Connectivity that keeps environments coherent end to end.</p>
+            </div>
+            <span class="complement-link" aria-hidden="true"></span>
+            <div class="complement-item">
+              <span class="complement-index">04</span>
+              <h3>Cybersecurity</h3>
+              <p>Defenses built into the stack—not bolted on after deployment.</p>
             </div>
           </div>
+
+          <p class="value-close reveal">
+            When these layers are engineered together, the environment is
+            resilient by design—not assembled from disconnected vendors after
+            the fact.
+          </p>
         </div>
       </section>
 
