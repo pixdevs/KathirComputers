@@ -185,98 +185,73 @@
     }
   })();
 
-  /* Services engagement rail */
-  var cycle = document.querySelector("[data-cycle]");
-  if (cycle) {
-    var nodes = Array.prototype.slice.call(
-      cycle.querySelectorAll(".services-stage")
+  /* Services accordion */
+  var accordion = document.querySelector("[data-accordion]");
+  if (accordion) {
+    var items = Array.prototype.slice.call(
+      accordion.querySelectorAll(".accordion-item")
     );
-    var panel = cycle.querySelector(".services-detail");
-    var titleEl = cycle.querySelector("[data-cycle-title]");
-    var detailEl = cycle.querySelector("[data-cycle-detail]");
-    var numEl = cycle.querySelector("[data-cycle-num]");
+    var triggers = Array.prototype.slice.call(
+      accordion.querySelectorAll(".accordion-trigger")
+    );
     var activeIndex = 0;
-    var panelTimer = 0;
 
-    function padNum(i) {
-      return i < 9 ? "0" + (i + 1) : String(i + 1);
-    }
-
-    function activate(index, focusNode) {
-      if (index < 0 || index >= nodes.length) return;
+    function openItem(index, focusTrigger) {
+      if (index < 0 || index >= items.length) return;
       activeIndex = index;
-      var node = nodes[index];
 
-      nodes.forEach(function (n, i) {
-        var selected = i === index;
-        n.classList.toggle("is-active", selected);
-        n.setAttribute("aria-selected", selected ? "true" : "false");
-        n.tabIndex = selected ? 0 : -1;
+      items.forEach(function (item, i) {
+        var trigger = item.querySelector(".accordion-trigger");
+        var panel = item.querySelector(".accordion-panel");
+        var open = i === index;
+        item.classList.toggle("is-open", open);
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        }
+        if (panel) {
+          if (open) {
+            panel.removeAttribute("hidden");
+          } else {
+            panel.setAttribute("hidden", "");
+          }
+        }
       });
 
-      cycle.setAttribute("data-active", String(index));
-
-      var title = node.getAttribute("data-title") || "";
-      var detail = node.getAttribute("data-detail") || "";
-      var num = padNum(index);
-
-      function applyCopy() {
-        if (titleEl) titleEl.textContent = title;
-        if (detailEl) detailEl.textContent = detail;
-        if (numEl) numEl.textContent = num;
+      if (focusTrigger && triggers[index]) {
+        triggers[index].focus();
       }
-
-      if (panel && !reduceMotion.matches) {
-        panel.classList.add("is-updating");
-        if (panelTimer) clearTimeout(panelTimer);
-        panelTimer = setTimeout(function () {
-          applyCopy();
-          panel.classList.remove("is-updating");
-        }, 140);
-      } else {
-        applyCopy();
-      }
-
-      if (panel) {
-        panel.setAttribute("aria-labelledby", node.id);
-      }
-
-      if (focusNode) node.focus();
     }
 
-    nodes.forEach(function (node, index) {
-      node.addEventListener("focus", function () {
-        activate(index, false);
+    triggers.forEach(function (trigger, index) {
+      trigger.addEventListener("click", function () {
+        openItem(index, false);
       });
-      node.addEventListener("click", function () {
-        activate(index, false);
-      });
-      node.addEventListener("pointerenter", function () {
+      trigger.addEventListener("pointerenter", function () {
         if (!finePointer.matches) return;
-        activate(index, false);
+        openItem(index, false);
       });
     });
 
-    cycle.addEventListener("keydown", function (e) {
-      if (!nodes.length) return;
+    accordion.addEventListener("keydown", function (e) {
+      if (!triggers.length) return;
       var next = activeIndex;
-      if (e.key === "ArrowRight" || e.key === "ArrowDown") {
-        next = (activeIndex + 1) % nodes.length;
+      if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+        next = (activeIndex + 1) % triggers.length;
         e.preventDefault();
-        activate(next, true);
-      } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
-        next = (activeIndex - 1 + nodes.length) % nodes.length;
+        openItem(next, true);
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        next = (activeIndex - 1 + triggers.length) % triggers.length;
         e.preventDefault();
-        activate(next, true);
+        openItem(next, true);
       } else if (e.key === "Home") {
         e.preventDefault();
-        activate(0, true);
+        openItem(0, true);
       } else if (e.key === "End") {
         e.preventDefault();
-        activate(nodes.length - 1, true);
+        openItem(triggers.length - 1, true);
       }
     });
 
-    activate(0, false);
+    openItem(0, false);
   }
 })();

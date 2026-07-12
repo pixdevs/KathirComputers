@@ -1,5 +1,3 @@
-/* Kathir Computers & Power Electronics — engineering services site */
-
 :root {
   --blue: #0073cf;
   --blue-deep: #005a9e;
@@ -505,7 +503,7 @@ body.has-pointer-motion .hero-visual img {
   max-width: 36rem;
 }
 
-/* —— Services (process rail) —— */
+/* -- Services (domains + accordion) -- */
 
 .section.services {
   padding-top: 4rem;
@@ -514,7 +512,7 @@ body.has-pointer-motion .hero-visual img {
 
 .services-header {
   max-width: 46rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.75rem;
 }
 
 .services-lead {
@@ -525,175 +523,60 @@ body.has-pointer-motion .hero-visual img {
   max-width: 42rem;
 }
 
-.services-engagement {
-  margin-top: 0.25rem;
+.services-domains {
+  margin-bottom: 2.25rem;
 }
 
-.services-rail-meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.services-rail-label {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text);
-}
-
-.services-rail-hint {
-  margin: 0;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-.services-rail {
+.domain-grid {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0;
-  align-items: stretch;
+  border-top: 1px solid var(--border);
 }
 
-.services-stage {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2rem;
-  margin: 0;
-  padding: 1rem 1rem 1.1rem;
-  border: none;
-  border-bottom: 2px solid transparent;
-  border-left: 2px solid var(--border-strong);
-  background: transparent;
-  color: var(--text);
-  font-family: var(--font-body);
-  text-align: left;
-  cursor: pointer;
-  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+.domain-item {
+  padding: 1.25rem 1.15rem 1.35rem;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  min-height: 8rem;
 }
 
-.services-stage:nth-child(4n + 3) {
-  border-left-color: rgba(86, 193, 49, 0.45);
+.domain-item:nth-child(2n) {
+  border-right: none;
 }
 
-.services-stage-num {
+.domain-item:nth-child(3),
+.domain-item:nth-child(4) {
+  border-bottom: none;
+}
+
+.domain-index {
+  display: block;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   letter-spacing: 0.08em;
   color: var(--blue);
+  margin-bottom: 0.55rem;
 }
 
-.services-stage:nth-child(4n + 3) .services-stage-num {
+.domain-item:nth-child(even) .domain-index {
   color: var(--green);
 }
 
-.services-stage-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
-  color: var(--text-muted);
-  transition: color 0.25s ease;
-}
-
-.services-stage-sub {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  opacity: 0.75;
-}
-
-.services-stage:hover,
-.services-stage:focus-visible {
-  background: rgba(255, 255, 255, 0.03);
-}
-
-.services-stage.is-active {
-  background: rgba(0, 115, 207, 0.08);
-  border-bottom-color: var(--blue);
-  border-left-color: var(--blue);
-  box-shadow: inset 0 -1px 0 rgba(0, 115, 207, 0.35);
-}
-
-.services-stage:nth-child(4n + 3).is-active {
-  background: rgba(86, 193, 49, 0.08);
-  border-bottom-color: var(--green);
-  border-left-color: var(--green);
-  box-shadow: inset 0 -1px 0 rgba(86, 193, 49, 0.35);
-}
-
-.services-stage.is-active .services-stage-name {
-  color: var(--text);
-}
-
-.services-rail-join {
-  align-self: center;
-  width: 1.25rem;
-  height: 1px;
-  background: linear-gradient(90deg, var(--blue), var(--green));
-  opacity: 0.55;
-}
-
-.services-detail {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1.25rem 1.5rem;
-  align-items: start;
-  margin-top: 0;
-  padding: 1.35rem 1.35rem 1.45rem;
-  background: var(--bg-elevated);
-  border-left: 2px solid var(--blue);
-  transition: opacity 0.18s ease, transform 0.18s ease, border-color 0.3s ease;
-}
-
-.services-engagement[data-active="1"] .services-detail,
-.services-engagement[data-active="3"] .services-detail {
-  border-left-color: var(--green);
-}
-
-.services-detail.is-updating {
-  opacity: 0;
-  transform: translateY(6px);
-}
-
-.services-detail-num {
-  margin: 0;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: 0.04em;
-  color: var(--blue);
-  line-height: 1.2;
-}
-
-.services-engagement[data-active="1"] .services-detail-num,
-.services-engagement[data-active="3"] .services-detail-num {
-  color: var(--green);
-}
-
-.services-detail-body {
-  min-width: 0;
-}
-
-.services-detail-title {
+.domain-item h3 {
   margin: 0 0 0.45rem;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   letter-spacing: -0.02em;
 }
 
-.services-detail-text {
+.domain-item p {
   margin: 0;
   color: var(--text-muted);
-  font-size: 0.98rem;
-  line-height: 1.55;
-  max-width: 44rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .capability-tags {
@@ -701,9 +584,8 @@ body.has-pointer-motion .hero-visual img {
   flex-wrap: wrap;
   gap: 0.55rem;
   list-style: none;
-  margin: 1.35rem 0 0;
+  margin: 1rem 0 0;
   padding: 0;
-  border-top: none;
 }
 
 .capability-tags li {
@@ -732,6 +614,132 @@ body.has-pointer-motion .hero-visual img {
   border-color: var(--green);
   background: rgba(86, 193, 49, 0.08);
 }
+
+.services-engagement {
+  margin-top: 0.5rem;
+}
+
+.services-rail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.25rem;
+  margin-bottom: 0.85rem;
+}
+
+.services-rail-label {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.services-rail-hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.services-accordion {
+  border-top: 1px solid var(--border);
+}
+
+.accordion-item {
+  border-bottom: 1px solid var(--border);
+  border-left: 2px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.accordion-item h3 {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.accordion-trigger {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  gap: 0.75rem;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0.85rem;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body);
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+}
+
+.accordion-item:nth-child(even) .accordion-num {
+  color: var(--green);
+}
+
+.accordion-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.accordion-icon {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 1.5px solid var(--text-muted);
+  border-bottom: 1.5px solid var(--text-muted);
+  transform: rotate(45deg);
+  transition: transform 0.25s var(--ease);
+  opacity: 0.7;
+}
+
+.accordion-item.is-open {
+  background: rgba(0, 115, 207, 0.06);
+  border-left-color: var(--blue);
+}
+
+.accordion-item:nth-child(even).is-open {
+  background: rgba(86, 193, 49, 0.06);
+  border-left-color: var(--green);
+}
+
+.accordion-item.is-open .accordion-title {
+  color: var(--text);
+}
+
+.accordion-item.is-open .accordion-icon {
+  transform: rotate(225deg);
+  opacity: 1;
+}
+
+.accordion-panel {
+  padding: 0 0.85rem 1.15rem 3.35rem;
+}
+
+.accordion-panel[hidden] {
+  display: none;
+}
+
+.accordion-panel p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 40rem;
+}
+/* Kathir Computers & Power Electronics — engineering services site */
 
 /* —— Outcomes / value —— */
 
@@ -977,7 +985,7 @@ body.has-pointer-motion .hero-visual img {
     transform: none;
   }
 
-  .services-detail {
+  .accordion-icon {
     transition: none;
   }
 }
@@ -1056,76 +1064,25 @@ body.has-pointer-motion .hero-visual img {
   }
 }
 
-@media (max-width: 700px) {
-  .services-rail {
-    grid-template-columns: 1fr 1rem 1fr;
-    grid-template-rows: auto auto;
-  }
-
-  .services-stage:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-  }
-
-  .services-rail-join:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .services-stage:nth-child(3) {
-    grid-column: 3;
-    grid-row: 1;
-  }
-
-  .services-rail-join:nth-child(4) {
-    display: none;
-  }
-
-  .services-stage:nth-child(5) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .services-rail-join:nth-child(6) {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .services-stage:nth-child(7) {
-    grid-column: 3;
-    grid-row: 2;
-  }
-}
-
 @media (max-width: 560px) {
   .complement {
     grid-template-columns: 1fr;
   }
 
-  .services-rail {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .services-rail-join {
-    display: none;
-  }
-
-  .services-stage {
-    width: 100%;
-    border-left-width: 2px;
-    border-bottom-width: 1px;
-    border-bottom-color: var(--border);
-  }
-
-  .services-stage.is-active {
-    border-bottom-width: 2px;
-  }
-
-  .services-detail {
+  .domain-grid {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+  }
+
+  .domain-item {
+    border-right: none;
+  }
+
+  .domain-item:nth-child(3) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .accordion-panel {
+    padding-left: 0.85rem;
   }
 }
 

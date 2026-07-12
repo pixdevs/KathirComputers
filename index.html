@@ -113,110 +113,160 @@
             </p>
           </div>
 
-          <div class="services-engagement reveal" id="engagement" data-cycle>
-            <div
-              class="services-rail"
-              role="tablist"
-              aria-label="Lifecycle stages"
-            >
-              <button
-                type="button"
-                class="services-stage is-active"
-                role="tab"
-                id="cycle-tab-1"
-                aria-selected="true"
-                aria-controls="services-detail"
-                data-title="Architect &amp; Establish"
-                data-detail="Power continuity planning (UPS/inverters), hardware procurement, and secure, scalable network and cloud architectures."
-                data-short="Architect"
-              >
-                <span class="services-stage-num">01</span>
-                <span class="services-stage-name">Architect</span>
-                <span class="services-stage-sub">Establish</span>
-              </button>
-              <span class="services-rail-join" aria-hidden="true"></span>
-              <button
-                type="button"
-                class="services-stage"
-                role="tab"
-                id="cycle-tab-2"
-                aria-selected="false"
-                aria-controls="services-detail"
-                tabindex="-1"
-                data-title="Implement &amp; Integrate"
-                data-detail="Routing and switching, IoT device integration, and cloud environment deployment with validated end-to-end connectivity."
-                data-short="Implement"
-              >
-                <span class="services-stage-num">02</span>
-                <span class="services-stage-name">Implement</span>
-                <span class="services-stage-sub">Integrate</span>
-              </button>
-              <span class="services-rail-join" aria-hidden="true"></span>
-              <button
-                type="button"
-                class="services-stage"
-                role="tab"
-                id="cycle-tab-3"
-                aria-selected="false"
-                aria-controls="services-detail"
-                tabindex="-1"
-                data-title="Secure &amp; Harden"
-                data-detail="Cybersecurity frameworks, threat diagnostics, and network hardening against emerging digital threats—security engineered into the system, not added later."
-                data-short="Secure"
-              >
-                <span class="services-stage-num">03</span>
-                <span class="services-stage-name">Secure</span>
-                <span class="services-stage-sub">Harden</span>
-              </button>
-              <span class="services-rail-join" aria-hidden="true"></span>
-              <button
-                type="button"
-                class="services-stage"
-                role="tab"
-                id="cycle-tab-4"
-                aria-selected="false"
-                aria-controls="services-detail"
-                tabindex="-1"
-                data-title="Sustain &amp; Optimize"
-                data-detail="Proactive hardware maintenance, component-level repair, and ongoing remote IT support for operational continuity."
-                data-short="Sustain"
-              >
-                <span class="services-stage-num">04</span>
-                <span class="services-stage-name">Sustain</span>
-                <span class="services-stage-sub">Optimize</span>
-              </button>
+          <div class="services-domains reveal" aria-label="Core service domains">
+            <div class="domain-grid">
+              <article class="domain-item">
+                <span class="domain-index">01</span>
+                <h3>Power Electronics</h3>
+                <p>Clean, continuous power as the foundation of stable systems.</p>
+              </article>
+              <article class="domain-item">
+                <span class="domain-index">02</span>
+                <h3>Computing Infrastructure</h3>
+                <p>Hardware and platforms engineered for the workloads you run.</p>
+              </article>
+              <article class="domain-item">
+                <span class="domain-index">03</span>
+                <h3>Networking &amp; Cloud</h3>
+                <p>Connectivity that keeps environments coherent end to end.</p>
+              </article>
+              <article class="domain-item">
+                <span class="domain-index">04</span>
+                <h3>Cybersecurity & AI</h3>
+                <p>Defenses built into the stack—not bolted on after deployment.</p>
+              </article>
             </div>
+            <!-- <ul class="capability-tags" aria-label="Additional domains">
+              <li>Cloud Deployment</li>
+              <li>Systems Integration</li>
+              <li>AI-based Security Systems</li>
+            </ul> -->
+          </div>
 
-            <div
-              class="services-detail"
-              id="services-detail"
-              role="tabpanel"
-              aria-labelledby="cycle-tab-1"
-              aria-live="polite"
-            >
-              <p class="services-detail-num" data-cycle-num>01</p>
-              <div class="services-detail-body">
-                <h3 class="services-detail-title" data-cycle-title>
-                  Architect &amp; Establish
+          <div class="services-engagement reveal" id="engagement" data-accordion>
+            <!-- <div class="services-rail-meta">
+              <p class="services-rail-label">Engagement model</p>
+              <p class="services-rail-hint">
+                Select a stage to explore each phase of the lifecycle.
+              </p>
+            </div> -->
+
+            <div class="services-accordion">
+              <div class="accordion-item is-open">
+                <h3>
+                  <button
+                    type="button"
+                    class="accordion-trigger"
+                    id="acc-tab-1"
+                    aria-expanded="true"
+                    aria-controls="acc-panel-1"
+                  >
+                    <span class="accordion-num">01</span>
+                    <span class="accordion-title">Architect &amp; Establish</span>
+                    <span class="accordion-icon" aria-hidden="true"></span>
+                  </button>
                 </h3>
-                <p class="services-detail-text" data-cycle-detail>
-                  Power continuity planning (UPS/inverters), hardware
-                  procurement, and secure, scalable network and cloud
-                  architectures.
-                </p>
+                <div
+                  class="accordion-panel"
+                  id="acc-panel-1"
+                  role="region"
+                  aria-labelledby="acc-tab-1"
+                >
+                  <p>
+                    Power continuity planning (UPS/inverters), hardware
+                    procurement, and secure, scalable network and cloud
+                    architectures.
+                  </p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3>
+                  <button
+                    type="button"
+                    class="accordion-trigger"
+                    id="acc-tab-2"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-2"
+                  >
+                    <span class="accordion-num">02</span>
+                    <span class="accordion-title">Implement &amp; Integrate</span>
+                    <span class="accordion-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion-panel"
+                  id="acc-panel-2"
+                  role="region"
+                  aria-labelledby="acc-tab-2"
+                  hidden
+                >
+                  <p>
+                    Routing and switching, IoT device integration, and cloud
+                    environment deployment with validated end-to-end
+                    connectivity.
+                  </p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3>
+                  <button
+                    type="button"
+                    class="accordion-trigger"
+                    id="acc-tab-3"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-3"
+                  >
+                    <span class="accordion-num">03</span>
+                    <span class="accordion-title">Secure &amp; Harden</span>
+                    <span class="accordion-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion-panel"
+                  id="acc-panel-3"
+                  role="region"
+                  aria-labelledby="acc-tab-3"
+                  hidden
+                >
+                  <p>
+                    Cybersecurity frameworks, threat diagnostics, and network
+                    hardening against emerging digital threats—security
+                    engineered into the system, not added later.
+                  </p>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h3>
+                  <button
+                    type="button"
+                    class="accordion-trigger"
+                    id="acc-tab-4"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-4"
+                  >
+                    <span class="accordion-num">04</span>
+                    <span class="accordion-title">Sustain &amp; Optimize</span>
+                    <span class="accordion-icon" aria-hidden="true"></span>
+                  </button>
+                </h3>
+                <div
+                  class="accordion-panel"
+                  id="acc-panel-4"
+                  role="region"
+                  aria-labelledby="acc-tab-4"
+                  hidden
+                >
+                  <p>
+                    Proactive hardware maintenance, component-level repair, and
+                    ongoing remote IT support for operational continuity.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-
-          <ul class="capability-tags reveal" aria-label="Core domains">
-            <li>Power Electronics</li>
-            <li>Computing Infrastructure</li>
-            <li>Network Architecture</li>
-            <li>Cybersecurity</li>
-            <li>Cloud Deployment</li>
-            <li>Systems Integration</li>
-            <li>AI-based Security Systems</li>
-          </ul>
         </div>
       </section>
 
